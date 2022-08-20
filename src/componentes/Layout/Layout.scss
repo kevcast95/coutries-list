@@ -1,0 +1,11 @@
+.main-layout {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 25px 20px;
+  margin: 0 auto;
+}
