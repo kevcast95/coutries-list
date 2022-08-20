@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react" 
-import { ALL_COUNTRIES, Query } from "../../graphQL/queries/getCountries"
+import { ALL_COUNTRIES, Query } from "../../graphQL/queries"
 import { Country } from "../../models/country.model";
 import CountryCard from "../../componentes/CountryCard";
 
@@ -21,7 +21,7 @@ function CountriesList() {
   return(
     <section className="countries-list">
       {
-        allCountries.map((country: Country) => (
+        allCountries.map((country) => (
          <CountryCard country={country}/>
         ))
       }

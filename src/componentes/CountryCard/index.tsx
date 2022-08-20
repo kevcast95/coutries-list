@@ -14,7 +14,7 @@ function CountryCard({country}: Props) {
     <article 
       key={`${country.code}-${country.name}`} 
       className="country-card"
-      onClick={()=>navigate(`/country-details/${country.name}/${country.code}`)}
+      onClick={()=>navigate(`/country_details/${country.name}/${country.code}`)}
     >
       <h4>Name:</h4>
       {country.name}
