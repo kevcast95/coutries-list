@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react" 
-import { ALL_COUNTRIES, Query } from "../../graphQL/queries"
+import { ALL_COUNTRIES, uQuery } from "../../graphQL/queries"
 import { Country } from "../../models/country.model";
 import CountryCard from "../../componentes/CountryCard";
 
 import './CountriesList.scss'
 
 function CountriesList() {
-  const { data, error, loading } = Query(ALL_COUNTRIES)
+  const { data, error, loading } = uQuery(ALL_COUNTRIES)
   const [allCountries, setAllCountries] = useState<Country[]>([])
   console.log(data, error, loading);
 

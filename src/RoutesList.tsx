@@ -7,8 +7,8 @@ import CountryDetails from './pages/CountryDetails';
 
 
 function RoutesList() {
-    return(
-        <BrowserRouter  basename={process.env.PUBLIC_URL}>
+    return (
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Layout>
                 <Routes>
                     <Route path="/" element={<CountriesList />} />

@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client'
+import { gql, useLazyQuery, useQuery } from '@apollo/client'
 
 export const ALL_COUNTRIES = gql`
   query {
@@ -12,22 +12,27 @@ export const ALL_COUNTRIES = gql`
 `
 
 export const COUNTRY = gql`
-  query singleCountry($code: String){
-    country {
+  query singleCountry($code: ID!){
+    country (code: $code){
       code
       name
-      native
       phone
       capital
       currency
-      languages
+      languages {
+        name
+        native
+      }
       emoji
-      emojiU
-      currency
-      continent
-      states
+      continent {
+        name
+      }
+      states {
+        name
+      }
     }
   }
 `
 
-export const Query = useQuery
+export const uQuery = useQuery
+export const lQuery = useLazyQuery
