@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from "react" 
+import React, {  useEffect } from "react" 
 import { ALL_COUNTRIES, uQuery } from "../../graphQL/queries"
-import { Country } from "../../models/country.model";
 import CountryCard from "../../componentes/CountryCard";
+
+import { useCountry } from "../../hooks/useCountry";
 
 import './CountriesList.scss'
 
 function CountriesList() {
+  
   const { data, error, loading } = uQuery(ALL_COUNTRIES)
-  const [allCountries, setAllCountries] = useState<Country[]>([])
-  console.log(data, error, loading);
+  const { allCountries, setAllCountries } = useCountry()
 
   useEffect(() => {
     if (data) {
-      const subArray = data.countries.slice(0,20)
-      setAllCountries(subArray)
+      //const subArray = data.countries.slice(0,20)
+      setAllCountries(data.countries)
     }
-  },[data])
+  },[data, setAllCountries])
   
+  if (loading) return <div>Loading...</div>
+  if (error) return <div>{error.message}</div>
   
   return(
     <section className="countries-list">

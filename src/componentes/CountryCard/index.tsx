@@ -16,11 +16,7 @@ function CountryCard({country}: Props) {
       className="country-card"
       onClick={()=>navigate(`/country_details/${country.name}/${country.code}`)}
     >
-      <h4>Name:</h4>
-      {country.name}
-      {country.emoji}
-      <h5>Capital:</h5>
-      {country.capital}
+      {country.emoji} {country.name}
     </article>
   )
 }

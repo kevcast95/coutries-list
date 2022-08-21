@@ -1,0 +1,17 @@
+.filters {
+  width: 90%;
+  height: 100px;
+  background-color: #fff;
+  position: absolute;
+  top: 65px;
+  border-radius: 10px;
+  box-shadow: -3px 13px 20px 4px #000;
+  &:after {
+    content: '\25b2';
+    padding-left: 0.5em;
+    position: absolute;
+    top: -13px;
+    right: 10%;
+    color: #FFF;
+  }
+}
