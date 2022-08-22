@@ -11,4 +11,7 @@
   border: solid 5px #ffff;
   padding: 10px;
   margin-top: 25px;
+  &__loading {
+    color: lime;
+  }
 }

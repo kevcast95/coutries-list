@@ -18,37 +18,44 @@ function CountryDetails() {
     getCountryDetail({ variables: { code } })
   }, [])
 
+  if (error) return <div>{error.message}</div>
+
   return (
     <section className="country-details">
-      <h1>{currentCountry?.emoji} {currentCountry?.name} ({currentCountry?.code}) </h1>
-      <div className="country-details_main">
-        <span>
-          <img src={location} alt="" />
-          <h4>Capital:</h4>
-          <p>{currentCountry?.capital}</p>
-          
-        </span>
-        <span>
-          <img src={globe} alt="" />
-          <h4>Continent:</h4>
-          <p>{currentCountry?.continent.name}</p>
-        </span>
-        <span>
-          <img src={language} alt="" />
-          <h4>Language:</h4>
-          {
-            currentCountry?.languages.map(lang => (
-              <p>{lang.name}</p>
-            ))
-          }
-          
-        </span>
-        <span>
-          <img src={currency} alt="" />
-          <h4>Currency:</h4>
-          <p>{currentCountry?.currency}</p>
-        </span>
-      </div>
+      {loading ? <h1 className="country-details__loading">Loading....</h1>
+        :
+        <div>
+          <h1>{currentCountry?.emoji} {currentCountry?.name} ({currentCountry?.code}) </h1>
+          <div className="country-details_main">
+            <span>
+              <img src={location} alt="" />
+              <h4>Capital:</h4>
+              <p>{currentCountry?.capital}</p>
+
+            </span>
+            <span>
+              <img src={globe} alt="" />
+              <h4>Continent:</h4>
+              <p>{currentCountry?.continent.name}</p>
+            </span>
+            <span>
+              <img src={language} alt="" />
+              <h4>Language:</h4>
+              {
+                currentCountry?.languages.map(lang => (
+                  <p>{lang.name}</p>
+                ))
+              }
+
+            </span>
+            <span>
+              <img src={currency} alt="" />
+              <h4>Currency:</h4>
+              <p>{currentCountry?.currency}</p>
+            </span>
+          </div>
+        </div>
+      }
     </section>
   )
 }

@@ -26,11 +26,11 @@ function CountriesList() {
     }
   },[data, setAllCountries, clearFilter ])
   
-  if (loading) return <div>Loading...</div>
   if (error) return <div>{error.message}</div>
   
   return(
     <section className="countries-list">
+      {loading && <h1 className="countries-list__loading">Loading....</h1> }
       {
         allCountries.map((country) => (
          <CountryCard country={country}/>

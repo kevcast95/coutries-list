@@ -8,8 +8,12 @@
   padding: 10px;
   margin-top: 25px;
   color: white;
-  & > h1 {
+  & > div > h1 {
     text-align: center;
+  }
+  &__loading {
+    text-align: center;
+    color: lime;
   }
   &_main {
     & > span {
