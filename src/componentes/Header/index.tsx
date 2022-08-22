@@ -3,9 +3,10 @@ import { ALL_CONTINENTS, SEARCH_COUNTRY, uQuery, lQuery } from "../../graphQL/qu
 import { useCountry } from "../../hooks/useCountry"
 
 import Filters from "../Filter"
+import PopUp from "../PopUP"
 
-import search from '../../assets/search.png'
-import filter from '../../assets/filter.png'
+import search from '../../assets/search_white.png'
+import menu from '../../assets/menu_white.png'
 
 import './Header.scss'
 import { Continent } from "../../models/continent.model"
@@ -13,7 +14,6 @@ import { Continent } from "../../models/continent.model"
 function Header() {
   const { data } = uQuery(ALL_CONTINENTS)
   const [searchCountry,result] = lQuery(SEARCH_COUNTRY)
-  console.log('result:', result);
   
   const { allCountries, setAllCountries, setClearFilter } = useCountry()
   const continents: Continent[] = data?.continents
@@ -49,30 +49,26 @@ function Header() {
         />
         <img src={search} alt="search-icon" />
       </div>
-      <button 
-        type="button" 
-        className="header__filter-btn"
-        onClick={() => setOpenFilters(!openFilters)}
-      >
-        <p>Filter</p>
-        <img src={filter} alt="filter-icon" />
-      </button>
-      <button 
-        type="button" 
-        className="header__filter-btn"
-        onClick={() => {
-            setClearFilter(true);
-            setSearchInput('')
-          }
-        }
-      >
-        <p>Clear</p>
-      </button>
-      {openFilters &&
+      <div className="header__filertes-section">
         <Filters
           continents={continents}
           currencies={uniqueCurrencies}
         />
+      </div>
+      <button 
+        type="button" 
+        className="header__menu-btn"
+        onClick={() => setOpenFilters(!openFilters)}
+      >
+        <img src={menu} alt="menu-icon" />
+      </button>
+      {openFilters &&
+        <PopUp>
+          <Filters
+            continents={continents}
+            currencies={uniqueCurrencies}
+          />
+        </PopUp>
       }
     </nav>
   )

@@ -12,10 +12,11 @@ type Props = {
   currencies: string[],
 }
 
+
 function Filters({continents, currencies}: Props) {
   const [queryFilter, setQueryfilter] = useState<string>('')
   const [gettingCountries, { data }] = lQuery(queryFilter === 'continent' ? FILTER_BY_CONTINENT: FILTER_BY_CURRENCY)
-  const {setAllCountries} = useCountry()
+  const {setAllCountries, setClearFilter} = useCountry()
   const filterByContinent = (filterBy:string, from: string) => {
     setQueryfilter(from)
     gettingCountries({ variables: { filterBy } })
@@ -29,22 +30,28 @@ function Filters({continents, currencies}: Props) {
 
   return (
     <div className="filters">
+      <button
+        type="button"
+        className="filters__clear"
+        onClick={() => setClearFilter(true)}
+      >
+        clear
+      </button>
       <div className="filters__selectors">
-        <DatalistInput
-          placeholder="Continent"
-          label="Filter by Continent"
+        {continents && <DatalistInput
+          placeholder="Select continent"
+          label=""
           onSelect={(item) => filterByContinent(item.id,'continent')}
-          items={continents.map(continent => ({id:continent.code, value: continent.name}))}
-        />
-        
+          items={continents?.map(continent => ({id:continent.code, value: continent.name}))}
+        />}
       </div>
       <div className="filters__selectors">
-        <DatalistInput
-          placeholder="Currency"
-          label="Filter by currency"
+        {currencies && <DatalistInput
+          placeholder="Select Currency"
+          label=""
           onSelect={(item) => filterByContinent(item.id,'currency')}
-          items={currencies.map(currency => ({id:currency, value: currency}))}
-        />
+          items={currencies?.map(currency => ({id:currency, value: currency}))}
+        />}
       </div>
     </div>
   )

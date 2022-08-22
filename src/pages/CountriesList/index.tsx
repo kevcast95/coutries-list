@@ -15,7 +15,6 @@ function CountriesList() {
 
   useEffect(() => {
     if (data && clearFilter) {
-      //const subArray = data.countries.slice(0,20)
       setAllCountries(data.countries)
       setClearFilter(false)
     }
@@ -23,7 +22,6 @@ function CountriesList() {
 
   useEffect(() => {
     if (data && !clearFilter) {
-      //const subArray = data.countries.slice(0,20)
       setAllCountries(data.countries)
     }
   },[data, setAllCountries, clearFilter ])

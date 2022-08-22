@@ -58,7 +58,6 @@ export const SEARCH_COUNTRY = gql`
 
 `
 
-
 export const COUNTRY = gql`
   query singleCountry($code: ID!){
     country (code: $code){

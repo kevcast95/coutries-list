@@ -1,15 +1,11 @@
 
-import React,{ ReactNode } from "react"
+import React from "react"
+import { Children } from "../../models/children.model";
 import Header from "../Header";
 
 import './Layout.scss'
 
-type ChildrenPorps = {
-  children:  ReactNode;
-}
-
-
-function Layout({ children } : ChildrenPorps) {
+function Layout({ children } : Children) {
   return (
     <main className="main-layout">
       <Header />

@@ -14,7 +14,6 @@ function CountryDetails() {
   const [getCountryDetail, { data, error, loading }] = lQuery(COUNTRY)
 
   const currentCountry: Country = data?.country
-  console.log('data:', currentCountry);
 
   useEffect(() => {
     getCountryDetail({ variables: { code } })

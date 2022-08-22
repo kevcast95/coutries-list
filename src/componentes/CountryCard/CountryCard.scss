@@ -1,8 +1,12 @@
 .country-card {
   width: 197px;
-  height: 78px;
-  border-radius: 10px;
-  background-color: #ffff;
+  min-height: 78px;
+  max-height: 100px;
+  border-radius: 10px;    
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  background-color: transparent;
   border: solid 2px lime;
   padding: 16px;
   cursor: pointer;
