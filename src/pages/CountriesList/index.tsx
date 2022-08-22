@@ -5,18 +5,28 @@ import CountryCard from "../../componentes/CountryCard";
 import { useCountry } from "../../hooks/useCountry";
 
 import './CountriesList.scss'
+import { clear } from "console";
 
 function CountriesList() {
   
+  
+  const { allCountries, setAllCountries, clearFilter, setClearFilter } = useCountry()
   const { data, error, loading } = uQuery(ALL_COUNTRIES)
-  const { allCountries, setAllCountries } = useCountry()
 
   useEffect(() => {
-    if (data) {
+    if (data && clearFilter) {
+      //const subArray = data.countries.slice(0,20)
+      setAllCountries(data.countries)
+      setClearFilter(false)
+    }
+  },[ clearFilter ])
+
+  useEffect(() => {
+    if (data && !clearFilter) {
       //const subArray = data.countries.slice(0,20)
       setAllCountries(data.countries)
     }
-  },[data, setAllCountries])
+  },[data, setAllCountries, clearFilter ])
   
   if (loading) return <div>Loading...</div>
   if (error) return <div>{error.message}</div>

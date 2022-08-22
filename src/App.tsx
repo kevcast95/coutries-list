@@ -7,11 +7,14 @@ import RoutesList from './RoutesList';
 function App() {
 
   const [allCountries, setAllCountries] = useState<Country[]>([])
+  const [clearFilter, setClearFilter] = useState<boolean>(false)
 
   return (
     <CountryContext.Provider value={{
       allCountries,
       setAllCountries,
+      clearFilter,
+      setClearFilter
     }}>
       <div className="App">
         <RoutesList />

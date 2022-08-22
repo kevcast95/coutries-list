@@ -1,15 +1,16 @@
 import { gql, useLazyQuery, useQuery } from '@apollo/client'
-import { client } from '../clientConection'
 
+const countryFields = ` {
+    code
+    name
+    emoji
+    capital
+    currency
+  }
+`
 export const ALL_COUNTRIES = gql`
   query {
-    countries {
-      code
-      name
-      emoji
-      capital
-      currency
-    }
+    countries: ${countryFields}
   }
 `
 
@@ -17,11 +18,19 @@ export const ALL_CONTINENTS = gql`
   query {
     continents {
       name
-      countries {
-        code
-      }
+      code
+      countries: ${countryFields}
     }
   }
+`
+
+export const FILTER_BY_CONTINENT = gql`
+  query getCountriesByContinent($continent: String ) {
+    countries(filter: { continent: { eq: $continent } }) {
+      name
+    }
+  }
+
 `
 
 

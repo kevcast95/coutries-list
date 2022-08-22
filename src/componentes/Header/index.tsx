@@ -8,11 +8,12 @@ import search from '../../assets/search.png'
 import filter from '../../assets/filter.png'
 
 import './Header.scss'
+import { Continent } from "../../models/continent.model"
 
 function Header() {
   const { data } = uQuery(ALL_CONTINENTS)
-  const { allCountries, setAllCountries } = useCountry()
-  const continents: string[] = data?.continents.map((continent: { name: string }) => continent.name)
+  const { allCountries, setAllCountries, setClearFilter } = useCountry()
+  const continents: Continent[] = data?.continents
   const currencies: string[] = allCountries?.map(country => country.currency)
   const [openFilters, setOpenFilters] = useState<Boolean>(false);
   
@@ -20,7 +21,7 @@ function Header() {
   console.log(data?.continents);
 
   const searchCountry = (value: string) => {
-    console.log(value);
+    if (value.length <= 0) setClearFilter(true);
     const searchResult = allCountries.filter(country => 
       country.name.toLocaleLowerCase().includes(value.toLocaleLowerCase()))
     setAllCountries(searchResult)
@@ -45,6 +46,13 @@ function Header() {
       >
         <p>Filter</p>
         <img src={filter} alt="filter-icon" />
+      </button>
+      <button 
+        type="button" 
+        className="header__filter-btn"
+        onClick={() => setClearFilter(true)}
+      >
+        <p>Clear</p>
       </button>
       {openFilters &&
         <Filters 
