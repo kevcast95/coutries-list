@@ -35,7 +35,7 @@ function Filters({continents, currencies}: Props) {
         className="filters__clear"
         onClick={() => setClearFilter(true)}
       >
-        clear
+        Clear
       </button>
       <div className="filters__selectors">
         {continents && <DatalistInput

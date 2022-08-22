@@ -13,7 +13,7 @@ const CountryContext = createContext<Context>({
   allCountries: [initialCountryState],
   setAllCountries: () => {},
   clearFilter: false,
-  setClearFilter: () => {}
+  setClearFilter: () => {},
 })
 
 export default CountryContext

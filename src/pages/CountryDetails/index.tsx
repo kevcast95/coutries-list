@@ -12,7 +12,6 @@ import './CountryDetails.scss'
 function CountryDetails() {
   const { code } = useParams()
   const [getCountryDetail, { data, error, loading }] = lQuery(COUNTRY)
-
   const currentCountry: Country = data?.country
 
   useEffect(() => {

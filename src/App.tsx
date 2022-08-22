@@ -14,7 +14,7 @@ function App() {
       allCountries,
       setAllCountries,
       clearFilter,
-      setClearFilter
+      setClearFilter,
     }}>
       <div className="App">
         <RoutesList />
