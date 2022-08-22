@@ -1,33 +1,58 @@
 import { gql, useLazyQuery, useQuery } from '@apollo/client'
 
-const countryFields = ` {
+export const ALL_COUNTRIES = gql`
+  query {
+   countries {
     code
     name
     emoji
     capital
     currency
-  }
-`
-export const ALL_COUNTRIES = gql`
-  query {
-    countries: ${countryFields}
+   }
   }
 `
 
 export const ALL_CONTINENTS = gql`
   query {
     continents {
-      name
+      name 
       code
-      countries: ${countryFields}
     }
   }
 `
 
 export const FILTER_BY_CONTINENT = gql`
-  query getCountriesByContinent($continent: String ) {
-    countries(filter: { continent: { eq: $continent } }) {
+  query getCountriesByContinent($filterBy: String ) {
+    countries(filter: { continent: { eq: $filterBy } }) {
+      code
       name
+      emoji
+      capital
+      currency
+    }
+  }
+`
+
+export const FILTER_BY_CURRENCY = gql`
+  query getCountriesByContinent($filterBy: String ) {
+    countries(filter: { currency: { eq: $filterBy } }) {
+      code
+      name
+      emoji
+      capital
+      currency
+    }
+  }
+`
+
+export const SEARCH_COUNTRY = gql`
+  query searchCountry($searchResult: [String] ) {
+    countries(filter: { code: { in: $searchResult } }) {
+      code
+      name
+      emoji
+      capital
+      currency
     }
   }
 
