@@ -5,7 +5,6 @@ import CountryCard from "../../componentes/CountryCard";
 import { useCountry } from "../../hooks/useCountry";
 
 import './CountriesList.scss'
-import { clear } from "console";
 
 function CountriesList() {
   
