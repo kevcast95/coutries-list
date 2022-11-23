@@ -30,6 +30,7 @@ function CountriesList() {
   return(
     <section className="countries-list">
       {loading && <h1 className="countries-list__loading">Loading....</h1> }
+      {allCountries.length === 0 &&  <h1 className="countries-list__loading">404 Not found</h1>}
       {
         allCountries.map((country) => (
          <CountryCard country={country}/>
