@@ -31,7 +31,7 @@ function Filters({continents, currencies}: Props) {
     setQueryfilter(from)
     gettingCountries({ variables: { filterBy } })
   }
-  console.log('filValues:',filValues);
+  
   useEffect(() => {
     if (data) {
       setAllCountries(data.countries)
